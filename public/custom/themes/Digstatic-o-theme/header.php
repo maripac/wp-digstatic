@@ -79,10 +79,11 @@ __      _| |__   __ _| |_   _ ___  | |_| |__   ___    __ _  ___  ___| |_ __ _| |
 		
 							<?php wp_nav_menu(
 								array(
-									'theme_location'		=> 'bottom_header_menu',	// Link this menu to a registered location
-									'container'				=> 'div',					// specify div as container wrapper
-									'container_id'			=> 'menu',					// ID for container wrapper div
-									'menu_class'      		=> 'bottom-menu-list'		// class on UL
+									'theme_location'		=> 'top_header_menu',	// Link this menu to a registered location
+									'container'       		=> FALSE,				// specify div as container wrapper
+									'container_id'    		=> FALSE,				// ID for container wrapper div
+									'depth'          		=> 1,					
+									'menu_class'      		=> 'top-menu-list'		// class on UL
 								));
 							?>
 		
