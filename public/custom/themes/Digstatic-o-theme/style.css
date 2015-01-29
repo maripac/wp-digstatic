@@ -456,7 +456,7 @@ a:hover {
 
 /* Vertical space and font size */
 .site-navigation ul {
-  height: 120px;
+  height: 60px;
 }
 
 .site-navigation ul li {
@@ -490,22 +490,17 @@ a:hover {
   overflow: hidden;
 }
 
-.row {
-  width: 100%;
-}
-
 .site-navigation ul {
   float: left;
 }
 
 .sidebar {
-  width: 100%;
-  float: right;
+  width: auto;
+  margin: auto;
 }
-
-.wrapper-main {
-  width: 100%;
-  float: right;
+.sidebar .widget {
+  width: auto;
+  margin: auto;
 }
 
 .copyright {
@@ -514,11 +509,6 @@ a:hover {
 }
 
 @media screen and (min-width: 540px) {
-  .banner-portada {
-    width: 30%;
-    float: left;
-  }
-
   .banner-portada .site-logo {
     float: right;
   }
@@ -528,28 +518,12 @@ a:hover {
     background-size: 100% auto;
   }
 
-  .nav-portada {
-    width: 70%;
-    overflow: hidden;
-    float: left;
-  }
-
-  .row {
-    width: 100%;
-  }
-
   .site-navigation ul {
     float: left;
   }
 
-  .sidebar {
-    width: 100%;
-    float: right;
-  }
-
   .wrapper-main {
-    width: 100%;
-    float: right;
+    margin: auto;
   }
 
   .copyright {
@@ -558,42 +532,31 @@ a:hover {
   }
 }
 @media screen and (min-width: 720px) {
-  .banner-portada {
-    width: 40%;
-    float: left;
-  }
-
-  .nav-portada {
-    width: 60%;
-    overflow: hidden;
-    float: left;
-  }
-
-  .row {
-    width: 100%;
-  }
-
   .site-navigation ul {
     float: left;
   }
 
   .sidebar {
-    width: 40%;
+    width: 30%;
     float: right;
   }
 
   .wrapper-main {
-    width: 60%;
+    width: 70%;
     float: right;
   }
 
   .copyright {
-    width: 60%;
+    width: 70%;
     float: right;
   }
 }
 @media screen and (min-width: 960px) {
   /* Percentage widths and floats and overflow */
+  .site-navigation ul {
+    height: 120px;
+  }
+
   .banner-portada {
     width: 30%;
     float: left;
@@ -603,10 +566,6 @@ a:hover {
     width: 70%;
     overflow: hidden;
     float: left;
-  }
-
-  .row {
-    width: 100%;
   }
 
   .site-navigation ul {
@@ -641,10 +600,6 @@ a:hover {
     float: left;
   }
 
-  .row {
-    width: 100%;
-  }
-
   .site-navigation ul {
     float: left;
   }
@@ -669,43 +624,13 @@ a:hover {
   padding-top: 1.85em;
 }
 
-aside.sidebar > div {
-  padding-left: 2em;
-}
-
-.wrapper-main article, .wrapper-main > ul {
-  padding-left: 2em;
-  padding-right: 2em;
-}
-
-.copyright p {
-  padding-left: 2em;
-  padding-right: 2em;
-}
-
-.nav-portada .site-menu {
-  padding-left: 2em;
-}
-
 /* Margins */
-.site-navigation ul li {
-  margin-right: 1em;
-  margin-left: 1.225em;
-}
-
-.site-navigation li ul {
-  margin-right: 2em;
-}
-
 /* Base Reset */
 ul {
   padding-left: 0;
   list-style-type: none;
 }
 
-/*.site-navigation ul{
-    list-style-type: none;
- }*/
 /* Positioning  and display */
 .site-navigation ul li {
   display: inline-block;
@@ -749,4 +674,49 @@ ul {
   margin-right: 0;
   padding-left: 0;
   list-style-type: none;
+}
+
+/**
+*------------------------------------------------------------------------------------
+*	LAYOUT PARTIAL
+*------------------------------------------------------------------------------------
+*/
+.container {
+  padding-left: 20px;
+  padding-right: 20px;
+  margin: auto;
+}
+.container > .row {
+  margin-left: -20px;
+  margin-right: -20px;
+  overflow: hidden;
+}
+.container-frame {
+  padding-left: 40px;
+  padding-right: 40px;
+  margin: auto;
+}
+.container-frame > .row {
+  margin-left: -20px;
+  margin-right: -20px;
+  overflow: hidden;
+}
+
+@media screen and (min-width: 960px) {
+  article {
+    padding-left: 20px;
+  }
+
+  .copyright p {
+    padding-left: 20px;
+  }
+}
+/**
+*------------------------------------------------------------------------------------
+*	COMPONENTS PARTIAL
+*------------------------------------------------------------------------------------
+*/
+/* Widgets */
+.widget > form > div > label + input {
+  width: 60%;
 }

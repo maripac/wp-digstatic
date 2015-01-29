@@ -71,88 +71,95 @@ __      _| |__   __ _| |_   _ ___  | |_| |__   ___    __ _  ___  ___| |_ __ _| |
 						<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"></a>
 					</div> <!-- end site-logo -->
 			</div> <!-- end portada --> 
-				<div class="nav-portada">
-					<nav class="site-navigation" role="navigation">
-
-
-						<?php  if(function_exists('wp_nav_menu')) : // Checks if this version of WP supports menus ?>
-		
-							<?php wp_nav_menu(
-								array(
-									'theme_location'		=> 'top_header_menu',	// Link this menu to a registered location
-									'container'       		=> FALSE,				// specify div as container wrapper
-									'container_id'    		=> FALSE,				// ID for container wrapper div
-									'depth'          		=> 2,					
-									'menu_class'      		=> 'top-menu-list'		// class on UL
-								));
-							?>
-		
-						<?php else: // If custom menus not support then the following code will be executed instead ?>
-							<div class="menu">
-					        	<ul>
-							   		<?php wp_list_pages('title_li='); ?>
-					           </ul>
-							</div>
-						<?php endif; // ends the conditional argument ?>
-
-						<?php
-					    /**
-						 * if ( has_nav_menu( 'page_a' ) ) {
-						 *   wp_nav_menu( array( 'theme_location' => 'page_a' ) );
-						 * } else {
-						 *   wp_nav_menu( array( 'theme_location' => 'parent_page' ) );
-						 * }
-						 *
-						 *	//if ( has_nav_menu( 'main-menu' ) ) {
-						 *   	// User has assigned menu to this location;
-						 *   	// output it
-						 *		wp_nav_menu(
-						 *		    array (
-						 *		    	'theme_location'  => 'header-menu',
-						 *		        'menu'            => 'header-menu',
-						 *		        'container'       => FALSE,
-						 *		        'container_id'    => FALSE,
-						 *		        'menu_class'      => '',
-						 *		        'menu_id'         => FALSE,
-						 *		        'depth'           => 1,
-						 *		        'walker'          => new Description_Walker
-						 *		    )
-						 *		);
-						 *	//}
-						 */
-						 ?>	
-						<?php
-						 /** 
-						  *	wp_nav_menu(
-						  *	array(
-						  *		'theme_location' => 'main-menu',
-						  *		'menu_class' => 'site-menu'
-						  *	)
-						  *);
-						  */
-
-						 /** 
-						  *	wp_nav_menu(
-						  *	array(
-						  *		'menu'            => 'main-menu',
-						  *		'container'       => FALSE,
-						  *		'container_id'    => FALSE,
-						  *		'menu_class'      => '',
-						  *		'menu_id'         => FALSE,
-						  * 	'depth'           => 1,
-						  * 	'walker'          => new Description_Walker
-						  * )
-						  *);
-						  */
-
-						?>
-					</nav>
-				</div> <!-- end nav-portada -->
+				
 		   </div> <!-- end row -->
 		</div> <!-- end container -->
 	</header> <!-- end site-header -->
+
+
+	<div class="container-frame">
+		<div class="row">
+			<div class="nav-portada">
+				<nav class="site-navigation" role="navigation">
+
+
+					<?php  if(function_exists('wp_nav_menu')) : // Checks if this version of WP supports menus ?>
+	
+						<?php wp_nav_menu(
+							array(
+								'theme_location'		=> 'top_header_menu',	// Link this menu to a registered location
+								'container'       		=> FALSE,				// specify div as container wrapper
+								'container_id'    		=> FALSE,				// ID for container wrapper div
+								'depth'          		=> 2,					
+								'menu_class'      		=> 'top-menu-list'		// class on UL
+							));
+						?>
+	
+					<?php else: // If custom menus not support then the following code will be executed instead ?>
+						<div class="menu">
+				        	<ul>
+						   		<?php wp_list_pages('title_li='); ?>
+				           </ul>
+						</div>
+					<?php endif; // ends the conditional argument ?>
+
+					<?php
+				    /**
+					 * if ( has_nav_menu( 'page_a' ) ) {
+					 *   wp_nav_menu( array( 'theme_location' => 'page_a' ) );
+					 * } else {
+					 *   wp_nav_menu( array( 'theme_location' => 'parent_page' ) );
+					 * }
+					 *
+					 *	//if ( has_nav_menu( 'main-menu' ) ) {
+					 *   	// User has assigned menu to this location;
+					 *   	// output it
+					 *		wp_nav_menu(
+					 *		    array (
+					 *		    	'theme_location'  => 'header-menu',
+					 *		        'menu'            => 'header-menu',
+					 *		        'container'       => FALSE,
+					 *		        'container_id'    => FALSE,
+					 *		        'menu_class'      => '',
+					 *		        'menu_id'         => FALSE,
+					 *		        'depth'           => 1,
+					 *		        'walker'          => new Description_Walker
+					 *		    )
+					 *		);
+					 *	//}
+					 */
+					 ?>	
+					<?php
+					 /** 
+					  *	wp_nav_menu(
+					  *	array(
+					  *		'theme_location' => 'main-menu',
+					  *		'menu_class' => 'site-menu'
+					  *	)
+					  *);
+					  */
+
+					 /** 
+					  *	wp_nav_menu(
+					  *	array(
+					  *		'menu'            => 'main-menu',
+					  *		'container'       => FALSE,
+					  *		'container_id'    => FALSE,
+					  *		'menu_class'      => '',
+					  *		'menu_id'         => FALSE,
+					  * 	'depth'           => 1,
+					  * 	'walker'          => new Description_Walker
+					  * )
+					  *);
+					  */
+
+					?>
+				</nav>
+			</div> <!-- end nav-portada -->
+		</div><!--end menu row-->
+	</div><!--end menu container-frame-->
 	
 
 	<!-- MAIN CONTENT AREA -->
-	<div class="container">
+	<div class="container-frame">
 		<div class="row">

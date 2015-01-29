@@ -1,0 +1,41 @@
+/**
+*------------------------------------------------------------------------------------
+*	LAYOUT PARTIAL
+*------------------------------------------------------------------------------------
+*/	
+
+.container{
+	padding-left: 20px;
+	padding-right: 20px;
+	margin: auto;
+	& > .row {
+		margin-left: -20px;
+		margin-right: -20px;
+		overflow: hidden;
+		}
+	&-frame{
+			padding-left: 40px;
+			padding-right: 40px;
+			margin: auto;
+	& > .row {
+		margin-left: -20px;
+		margin-right: -20px;
+		overflow: hidden;
+		}
+
+	}
+}
+
+.wrapper-main{
+
+}
+@media screen and (min-width:960px) {
+	article{
+		padding-left:20px;
+	}
+	.copyright{
+		p{
+			padding-left:20px;
+		}
+	}
+}
