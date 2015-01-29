@@ -82,7 +82,7 @@ __      _| |__   __ _| |_   _ ___  | |_| |__   ___    __ _  ___  ___| |_ __ _| |
 									'theme_location'		=> 'top_header_menu',	// Link this menu to a registered location
 									'container'       		=> FALSE,				// specify div as container wrapper
 									'container_id'    		=> FALSE,				// ID for container wrapper div
-									'depth'          		=> 1,					
+									'depth'          		=> 2,					
 									'menu_class'      		=> 'top-menu-list'		// class on UL
 								));
 							?>

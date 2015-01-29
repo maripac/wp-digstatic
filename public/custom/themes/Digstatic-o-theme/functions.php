@@ -118,14 +118,79 @@ if ( ! function_exists( 'alpha_setup' ) ) {
 	?>
 
 <?php endif; ?>
+
+<?php
+if ( ! function_exists( 'alpha_post_meta' ) ) :
+
+/**
+ * Prints HTML with meta information for current post: categories  + custom taxonomies terms, tags, permalink, author, and date.
+ * @since Twenty Twelve 1.0
+ */
+function alpha_post_meta() {
+	
+
+	$tag_list = get_the_tag_list( '', __( ', ', 'alpha' ) );
+
+    // taxonomies (categories and other terms)
+	$id = get_the_ID();
+	  $taxonomy_terms_list = "";
+	  foreach ( get_object_taxonomies( get_post_type($id) ) as $taxonomy ) {	  $terms_list = get_the_term_list( $id, $taxonomy, '', __( ', ', 'alpha' ) );
+      if ( $taxonomy_terms_list && $terms_list )
+	    $taxonomy_terms_list .= __( ', ', 'alpha' ).$terms_list;
+	  else
+		$taxonomy_terms_list .= $terms_list;
+	}
+
+	$date = sprintf( '<a href="%1$s" title="%2$s" rel="bookmark"><time class="entry-date" datetime="%3$s">%4$s</time></a>',
+		esc_url( get_permalink() ),
+		esc_attr( get_the_time() ),
+		esc_attr( get_the_date( 'c' ) ),
+		esc_html( get_the_date() )
+	);
+
+	$author = sprintf( '<span class="author vcard"><a class="url fn n" href="%1$s" title="%2$s" rel="author">%3$s</a></span>',
+		esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
+		esc_attr( sprintf( __( 'View all posts by %s', 'alpha' ), get_the_author() ) ),
+		get_the_author()
+	);
+
+	// Translators: 1 is taxonmies terms, 2 is tag, 3 is the date and 4 is the author's name.
+	if ( $tag_list ) {
+		$utility_text = __( 'This entry was posted in %1$s and tagged %2$s on %3$s<span class="by-author"> by %4$s</span>.', 'alpha' );
+	} elseif ( $taxonomy_terms_list ) {
+		$utility_text = __( 'This entry was posted in %1$s on %3$s<span class="by-author"> by %4$s</span>.', 'alpha' );
+	} else {
+		$utility_text = __( 'This entry was posted on %3$s<span class="by-author"> by %4$s</span>.', 'alpha' );
+	}
+
+    printf(
+		$utility_text,
+		$taxonomy_terms_list,
+	  	$tag_list,
+		$date,
+		$author
+	);
+
+	$id = get_the_ID();
+	$meta = get_post_meta($id, "_location", true);
+	if ( $meta ) {
+	   	echo '<h3 class="post-meta">' . $meta . '</h3>';
+	  }
+	$meta2 = get_post_meta($id, "_dresscode", true);
+	if ( $meta2 ) {
+	   	echo '<h3 class="post-meta">' . $meta2 . '</h3>';
+	   }
+}
+endif;
+?>
 <?php
 /**
  * 5.0 - Display meta information for a specific post.
  *
  *
  */
-if ( ! function_exists( 'alpha_post_meta' ) ) {
-	function alpha_post_meta() {
+if ( ! function_exists( 'alpha_post_meta_b' ) ) {
+	function alpha_post_meta_b() {
 		echo '<ul class="list-inline entry-meta">';
 
 		if ( get_post_type() === 'post' || 'snippets' || 'events' ) {
@@ -148,10 +213,10 @@ if ( ! function_exists( 'alpha_post_meta' ) ) {
 			echo '<li class="meta-date"> ' . get_the_date() . ' </li>';
 
 			// The categories.
-			$category_list = get_the_category_list( ', ' );
-			if ( $category_list ) {
-				echo '<li class="meta-categories"> ' . $category_list . ' </li>';
-			}
+			// $category_list = get_the_category_list( ', ' );
+			// if ( $category_list ) {
+			// 	echo '<li class="meta-categories"> ' . $category_list . ' </li>';
+			// }
 
 			// The tags.
 			$tag_list = get_the_tag_list( '', ', ' );
@@ -160,11 +225,14 @@ if ( ! function_exists( 'alpha_post_meta' ) ) {
 			}
 			// Custom Taxonomies.
 			$id = get_the_ID();
-			$terms_list = get_the_term_list( $id, 'languages' ,  ' ' );
-			if ( $terms_list ) {
-				echo '<li class="meta-tax">' . $terms_list . ' </li>';
+			$terms_listed = get_the_term_list( $id, 'languages' , '', ', ' );
+			if ( $terms_listed ) {
+				echo '<li class="meta-tax">' . $terms_listed . ' </li>';
 				
 			}
+			
+
+
 
 			// Custom Taxonomies.
 			/**
@@ -179,36 +247,37 @@ if ( ! function_exists( 'alpha_post_meta' ) ) {
 			// Custom Taxonomies.
 			// Unlike custom taxonomies, custom metadata does not exist within this repo.
 			// To make use of the code below activate the plugin Sample Metabox for Events
-			/**
-			 * $id = get_the_ID();
-			 * $meta = get_post_meta($id, "_location", true);
-			 * if ( $meta ) {
-			 *  	echo '<li class="post-meta">' . $meta . '</li>';
-			 * }
-			 * $meta2 = get_post_meta($id, "_dresscode", true);
-			 * if ( $meta2 ) {
-			 *  	echo '<li class="post-meta">' . $meta2 . '</li>';
-			 * }
-			 */
+			
+			  $id = get_the_ID();
+			  $meta = get_post_meta($id, "_location", true);
+			  if ( $meta ) {
+			   	echo '<li class="post-meta">' . $meta . '</li>';
+			  }
+			  $meta2 = get_post_meta($id, "_dresscode", true);
+			  if ( $meta2 ) {
+			   	echo '<li class="post-meta">' . $meta2 . '</li>';
+			  }
+
+			 
 			
 			
 			
 
 			// Comments link.
-			if ( comments_open() ) :
-				echo '<li>';
-				echo '<span class="meta-reply">';
-				comments_popup_link( __( 'Leave a comment', 'alpha' ), __( 'One comment so far', 'alpha' ), __( 'View all % comments', 'alpha' ) );
-				echo '</span>';
-				echo '</li>';
-			endif;
+			// if ( comments_open() ) :
+			// 	echo '<li>';
+			// 	echo '<span class="meta-reply">';
+			// 	comments_popup_link( __( 'Leave a comment', 'alpha' ), __( 'One comment so far', 'alpha' ), __( 'View all % comments', 'alpha' ) );
+			// 	echo '</span>';
+			// 	echo '</li>';
+			// endif;
 
 			// Edit link.
-			if ( is_user_logged_in() ) {
-				echo '<li>';
-				edit_post_link( __( 'Edit', 'alpha' ), '<span class="meta-edit">', '</span>' );
-				echo '</li>';
-			}
+			// if ( is_user_logged_in() ) {
+			// 	echo '<li>';
+			// 	edit_post_link( __( 'Edit', 'alpha' ), '<span class="meta-edit">', '</span>' );
+			// 	echo '</li>';
+			// }
 		}
 
 	}
@@ -465,4 +534,4 @@ if ( ! function_exists( 'alpha_load_wp_head' ) ) {
 // 	}
 
 // 	add_action( 'wp_enqueue_scripts', 'alpha_scripts' );
-// }
+//}

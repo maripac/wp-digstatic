@@ -1,0 +1,398 @@
+/**
+ * Theme Name: Digstatic O Theme
+ * Theme URI: https://gostak.io/
+ * Author: Maripac
+ * Author URI: https://gostak.io/
+ * Description: My theme for WordPress with autoloading functionality using composer for dependencies declaration and API integration.
+ * Version: 1.0
+ * License: GNU General Public License v2 or later
+ * License URI: http://www.gnu.org/licenses/gpl-2.0.html
+ * Tags: composer, slim
+ */
+
+@import "partials/normalize";
+
+$campton_xl: 'camptonbold_demo';
+$style-name_xl: camptonbold_demo;
+$file_xl: 'campton-bolddemo-webfont';
+$category_xl: sans-serif;
+
+$campton_s: 'camptonlight_demo';
+$style-name_s: camptonlight_demo;
+$file_s: 'campton-lightdemo-webfont';
+$category_s: sans-serif;
+
+
+@mixin font-face($style-name, $file, $category:"") {
+    $filepath: "assets/fonts/" + $file;
+    @font-face {
+        font-family: "#{$style-name}";
+        src: url($filepath + ".eot");
+        src: url($filepath + ".eot?#iefix") format('embedded-opentype'), url($filepath + ".woff") format('woff'), url($filepath + ".ttf")  format('truetype'), url($filepath + ".svg#" + $style-name + "") format('svg');
+    }
+    %#{$style-name} {
+        font: {
+            @if $category != "" {
+                family: "#{$style-name}", #{$category};
+            }
+            @else {
+                family: "#{$style-name}";
+                weight: normal;
+            }
+        }
+    }
+}
+@include font-face($style-name_s, $file_s, $category_s);
+@include font-face($style-name_xl, $file_xl, $category_xl);
+
+h2{
+    font-family: $campton_s;
+}
+a{
+    text-decoration: none;
+}
+a:hover{
+    text-decoration: none;
+}
+/*Widgets*/
+
+#calendar_wrap{
+    font-family: $campton_s;
+}
+#wp-calendar caption {
+    text-align: left;
+    font-size: 0.95em;
+    font-weight: lighter;
+}
+.site-navigation ul li, h1{
+    font-family: $campton_xl;
+    font-weight: lighter;
+}
+
+
+.screen-reader-text{
+    display: none;
+}
+
+/* Background colors */
+.nav-portada{
+   // /* background-color: #fecfc9;*/
+}
+.banner-portada{
+  //  /*background-color: #c3c6c9;*/
+    background-color: #322de8;
+}
+
+.sidebar{
+  //  /*background-color: #c9c9c9;*/
+}
+.wrapper-main{
+  //  /*background-color: #ededed;*/
+}
+
+footer{
+  //  /*background-color: #c9fcfe;*/
+}
+
+
+
+
+
+
+/* Vertical space and font size */
+
+.site-navigation ul{
+    height:120px;
+}
+
+.site-navigation ul li{
+    font-size: 1.425em;
+}
+.site-navigation li li{
+    font-size: 1em;
+
+}
+
+.site-navigation ul li.menu-item-has-children a{
+    padding-bottom:20px;
+}
+
+
+
+
+ /* Percentage widths, floats and overflow */
+
+ .container > .row, .container {
+    overflow:hidden;
+
+ }
+ .banner-portada .site-logo{
+    float:right;
+
+
+ }
+ .banner-portada{
+    width:100%;
+    overflow:hidden;
+ }
+ .nav-portada{
+    width:100%;
+    overflow: hidden;
+ }
+ .row{
+    width:100%;
+ }
+ .site-navigation ul{
+    float:left;
+ }
+ .sidebar{
+    width:100%;
+    float:right;
+ }
+ .wrapper-main{
+    width:100%;
+    float: right;
+ }
+ .copyright{
+    width:100%;
+    float: right;
+ }
+
+  @media screen and (min-width:540px) {
+
+     .banner-portada{
+        width:30%;
+        float:left;
+     }
+     .banner-portada .site-logo{
+        float:right;
+
+     }
+     .banner-portada .site-logo a{
+       // /*width:100%;
+       // height:auto;*/
+        max-width: 100%;
+        background-size: 100% auto;
+
+     }
+     .nav-portada{
+        width:70%;
+        overflow: hidden;
+        float:left;
+     }
+     .row{
+        width:100%;
+     }
+     .site-navigation ul{
+        float:left;
+     }
+     .sidebar{
+        width:100%;
+        float:right;
+     }
+     .wrapper-main{
+        width:100%;
+        float: right;
+     }
+     .copyright{
+        width:100%;
+        float: right;
+     }
+}
+
+
+@media screen and (min-width:720px) {
+
+     .banner-portada{
+        width:40%;
+        float:left;
+     }
+
+     .nav-portada{
+        width:60%;
+        overflow: hidden;
+        float:left;
+     }
+     .row{
+        width:100%;
+     }
+     .site-navigation ul{
+        float:left;
+     }
+     .sidebar{
+        width:40%;
+        float:right;
+     }
+     .wrapper-main{
+        width:60%;
+        float: right;
+     }
+     .copyright{
+        width:60%;
+        float: right;
+     }
+}
+
+@media screen and (min-width:960px) {
+     /* Percentage widths and floats and overflow */
+
+
+     .banner-portada{
+        width:30%;
+        float:left;
+     }
+     .nav-portada{
+        width:70%;
+        overflow: hidden;
+        float:left;
+     }
+     .row{
+        width:100%;
+     }
+     .site-navigation ul{
+        float:left;
+     }
+     .sidebar{
+        width:30%;
+        float:right;
+     }
+     .wrapper-main{
+        width:70%;
+        float: right;
+     }
+     .copyright{
+        width:70%;
+        float: right;
+     }
+}
+
+@media screen and (min-width:1240px) {
+     /* Percentage widths and floats and overflow */
+
+
+     .banner-portada{
+        width:20%;
+        float:left;
+     }
+     .nav-portada{
+        width:80%;
+        overflow: hidden;
+        float:left;
+     }
+     .row{
+        width:100%;
+     }
+     .site-navigation ul{
+        float:left;
+     }
+     .sidebar{
+        width:20%;
+        float:right;
+     }
+     .wrapper-main{
+        width:80%;
+        float: right;
+     }
+     .copyright{
+        width:80%;
+        float: right;
+     }
+}
+  /* Paddings */
+
+.sidebar{
+    padding-top:1.85em;
+ }
+ aside.sidebar > div{
+    padding-left:2em;
+ }
+
+ .wrapper-main article, .wrapper-main > ul{
+    padding-left: 2em;
+    padding-right: 2em;
+ }
+ .copyright p{
+    padding-left: 2em;
+    padding-right: 2em;
+ }
+ .nav-portada .site-menu{
+  padding-left: 2em;    
+ }
+
+ /* Margins */
+
+ .site-navigation ul li{
+    margin-right:1em;
+    margin-left:1.225em;
+}
+.site-navigation li ul{
+    
+    margin-right:2em;
+}
+
+
+
+/* Base Reset */
+
+ul{
+    padding-left:0;
+    list-style-type: none;
+}
+
+/*.site-navigation ul{
+    list-style-type: none;
+ }*/
+
+
+
+/* Positioning  and display */
+
+.site-navigation ul li{
+    display: inline-block;
+}
+
+.site-navigation li ul{
+
+    position:relative;
+   // /*list-style-type: none;
+   // display: inline-block;*/
+}
+
+.site-navigation ul li.menu-item-has-children a + ul{
+    display: none;
+}
+
+
+.site-navigation ul li.menu-item-has-children a:hover{
+
+}
+
+
+.site-navigation ul li.menu-item-has-children:hover a + ul{
+    position:absolute; 
+    display: block; 
+}
+.site-navigation ul li.menu-item-has-children:hover a + ul li{
+ position:relative;
+ ///*right:9999px;*/
+ display: block;
+ ///*right:20px;*/
+ ///*float:left;*/
+
+}
+.site-navigation ul li.menu-item-has-children a + ul.sub-menu li.menu-item-has-children a + ul.sub-menu li{
+display: none;
+}
+.site-navigation ul li.menu-item-has-children li.menu-item-has-children ul li{display: none;}
+.site-navigation ul li.menu-item-has-children li.menu-item-has-children ul{ 
+    display: inline;
+}
+.site-navigation ul li.menu-item-has-children a + ul.sub-menu li.menu-item-has-children:hover a + ul.sub-menu li{
+     position:relative; 
+     left:1.25em; 
+     display: inline; 
+     margin-left: 0; 
+     margin-right: 0; 
+     padding-left:0; 
+     list-style-type: none;
+}

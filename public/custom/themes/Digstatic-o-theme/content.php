@@ -24,9 +24,12 @@
 		<?php endif; ?>
 
 		<p class="entry-meta">
+			<ul class="entry-taxonomies">
+
+			</ul>
 			<?php
 				// Display the meta information
-				alpha_post_meta();
+				alpha_post_meta_b();
 			?>
 
 

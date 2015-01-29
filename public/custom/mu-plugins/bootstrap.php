@@ -36,13 +36,13 @@ add_action('plugins_loaded', function () {
 	    'singular_name' => "Snippet"
     ]);
 	$events = new WPPlugins\WPExtend\ContentType('events', [
-	    'supports' => ['editor', 'title', 'custom-fields', 'author', 'thumbnail']//,
-	    //'taxonomies' => ['languages']
+	    'supports' => ['editor', 'title', 'custom-fields', 'author', 'thumbnail'],
+	    'taxonomies' => ['languages']
 	], [
 	    'singular_name' => "Event"
     ]);
 
-	$languages = new WPPlugins\WPExtend\ContentTax('languages', ['post', 'snippets'], [], [
+	$languages = new WPPlugins\WPExtend\ContentTax('languages', ['post', 'snippets', 'events'], [], [
 	    'singular_name' => "Language",
 	    'plural_name' => "Languages"
     ]);

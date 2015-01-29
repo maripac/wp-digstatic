@@ -74,7 +74,7 @@ class ContentTax
 		
 
 		$default_args = [
-			'hierarchical'				 => true,
+			'hierarchical'				 => false,
 			'public'                     => true,
 			'show_ui'                    => true,
 			'show_admin_column'          => true,

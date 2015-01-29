@@ -29,4 +29,6 @@ vendor/
 docs/
 db/
 public/custom/plugins/wp-remove-category-base/
+public/custom/themes/Digstatic-o-theme/assets/.sass-cache/
+public/custom/themes/Digstatic-o-theme/assets/node_modules/
 
